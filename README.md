@@ -21,6 +21,19 @@
 - **useEffect**: Default choice for async tasks and general side effects.
 - **useLayoutEffect**: Use only when timing is critical for layout-related changes.
 - **useInsertionEffect**: Advanced – mostly for library authors.
+---
+## 🏗 HOCs vs Custom Hooks – What's the Difference?
+
+### 🔸 Higher-Order Components (HOCs)
+A HOC is basically a function that **takes a component and returns a new one** with extra features.
+
+```js
+function withLogger(WrappedComponent) {
+  return function Enhanced(props) {
+    console.log("Rendered with props:", props);
+    return <WrappedComponent {...props} />;
+  };
+}
 
 ---
 #### Custom Hooks
