@@ -1,37 +1,28 @@
-Here's your content formatted neatly for a `README.md` file section:
+## React Essentials: useEffect vs useLayoutEffect vs useInsertionEffect
 
-````markdown
-## React Concepts: Deep Dive
+### useEffect
+- Runs **after the DOM is painted**.
+- Ideal for: fetching data, setting up subscriptions, timers, etc.
+- Usage: most side effects – you'll use this 90% of the time.
 
-### Difference between `useEffect`, `useLayoutEffect`, and `useInsertionEffect`
+### useLayoutEffect
+- Executes **right after DOM mutations but before paint**.
+- Good when you need to **measure layout or make DOM changes before the browser repaints**.
+- Example: animations, reading element dimensions.
 
-| Hook               | Timing                                 | Use Case                                               |
-|--------------------|----------------------------------------|---------------------------------------------------------|
-| `useEffect`        | Runs **after** the DOM is painted      | Most common – for data fetching, subscriptions, timers |
-| `useLayoutEffect`  | Runs **synchronously after DOM mutations**, but **before paint** | For layout reads/measures (e.g., animations, DOM dimensions) |
-| `useInsertionEffect` | Runs **before** any DOM mutations   | Rare – used by CSS-in-JS libraries for style injection |
-
-#### When to Use:
-- **`useEffect`**: 90% of the time – safe for async side effects.
-- **`useLayoutEffect`**: When layout needs to be measured or mutated **before** paint.
-- **`useInsertionEffect`**: For injecting styles early – not common in daily dev work.
+### useInsertionEffect
+- Runs **before any DOM mutations**.
+- Mostly used by **CSS-in-JS libraries** to inject styles early.
+- Rare in day-to-day work.
 
 ---
 
-### 🏗Higher-Order Components (HOCs) vs Custom Hooks
+## When to Use What
+- **useEffect**: Default choice for async tasks and general side effects.
+- **useLayoutEffect**: Use only when timing is critical for layout-related changes.
+- **useInsertionEffect**: Advanced – mostly for library authors.
 
-#### Higher-Order Components (HOCs)
-A **HOC** is a function that takes a component and returns a new component with added behavior.
-
-```js
-function withLogger(WrappedComponent) {
-  return function Enhanced(props) {
-    console.log("Rendered with props:", props);
-    return <WrappedComponent {...props} />;
-  };
-}
-````
-
+---
 #### Custom Hooks
 
 A **custom hook** is a function that encapsulates and reuses logic using React’s hooks.
