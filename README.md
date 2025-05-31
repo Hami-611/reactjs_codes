@@ -34,9 +34,9 @@ function withLogger(WrappedComponent) {
     return <WrappedComponent {...props} />;
   };
 }
-
+```
 ---
-#### Custom Hooks
+## Custom Hooks
 
 A **custom hook** is a function that encapsulates and reuses logic using React’s hooks.
 
